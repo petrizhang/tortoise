@@ -180,3 +180,4 @@ scale is (100, 100);
 for t from 0 to 2*pi step pi/200 draw(cos(t), sin(t));
 ```
 运行结果：
+![test0](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test0.PNG)
