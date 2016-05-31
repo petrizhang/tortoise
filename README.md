@@ -4,6 +4,8 @@ Interpreter of a simple drawing language.
 编译原理大作业，简单的函数绘图语言解释器。
 
 ## 1. 项目构建
+win10系统
+
 使用VS2015 community构建。
 
 ## 2. 函数绘图语言语法说明
@@ -180,4 +182,121 @@ scale is (100, 100);
 for t from 0 to 2*pi step pi/200 draw(cos(t), sin(t));
 ```
 运行结果：
+
 ![test0](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test0.PNG)
+
+### 示例2
+```
+--------------- 函数f(t)=t的图形
+origin is (200, 300);				-- 设置原点的偏移量
+rot is pi/6;					-- 设置旋转角度
+scale is (200, 100);				-- 设置横坐标和纵坐标的比例
+for T from 0 to 200 step 1 draw (t, 0);		-- 横坐标的轨迹
+for T from 0 to 180 step 1 draw (0, t);	-- 纵坐标的轨迹
+for T from 0 to 150 step 1 draw (t, t);	-- 函数f(t)=t的轨迹
+```
+运行结果：
+
+![test1](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test1.PNG)
+
+### 示例3
+```
+--------------- 图形1：
+origin is (20, 200);									-- 设置原点的偏移量
+rot is 0;												-- 不旋转
+scale is (40, 40);										-- 设置比例
+for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+origin is (20, 240);									-- 下移40单位
+for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+origin is (20, 280);									-- 再下移40单位
+for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+
+--------------- 图形2：
+origin is (380, 240);									-- 右移
+scale is (80, 80/3);									-- y方向压缩为三分之一
+rot is pi/2+0*pi/3 ;									-- 旋转初值设置
+for T from -pi to pi step pi/50 draw (cos(t), sin(t));	-- 画T的轨迹
+rot is pi/2+2*pi/3;										-- 旋转2/3*pi
+for T from -pi to pi step pi/50 draw (cos(t), sin(t));	-- 画T的轨迹
+rot is pi/2-2*pi/3;										-- 再旋转2/3*pi
+for T from -pi to pi step pi/50 draw (cos(t), sin(t));	-- 画T的轨迹
+
+--------------- 图形3：
+origin is(580, 240);									-- 再右移
+scale is (80, 80);										-- 恢复原比例
+rot is 0;												-- 不旋转
+for t from 0 to 2*pi step pi/50 draw(cos(t),sin(t));	-- 画T的轨迹
+for t from 0 to Pi*20 step Pi/50 draw					-- 画T的轨迹
+   ((1-1/(10/7))*Cos(T)+1/(10/7)*Cos(-T*((10/7)-1)), 
+	(1-1/(10/7))*Sin(T)+1/(10/7)*Sin(-T*((10/7)-1)));
+```
+运行结果：
+
+![test2](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test2.PNG)
+
+
+### 示例4
+```
+--------------- 函数复杂度图形：
+rot is 0;										-- 不旋转
+origin is (50, 400);							-- 设置新原点（距系统默认原点的偏移量）
+
+scale is (2, 1);								-- 设置比例
+for T from 0 to 300 step 1 draw (t, 0);			-- 横坐标
+for T from 0 to 300 step 1 draw (0, -t);		-- 纵坐标
+
+scale is (2, 1);								-- 设置比例
+for T from 0 to 300 step 1 draw (t, -t);		-- 函数f(t)=t的轨迹
+
+scale is (2, 0.1);								-- 设置比例
+for T from 0 to 55 step 1 draw (t, -(t*t));		-- 函数f(t)=t*t的轨迹
+
+scale is (10, 5);								-- 设置比例
+for T from 0 to 60 step 1 draw (t, -sqrt(t));	-- 函数f(t)=sqrt(t)的轨迹
+
+scale is (20, 0.1);								-- 设置比例
+for T from 0 to 8 step 0.1 draw (t, -exp(t));	-- 函数f(t)=exp(t)的轨迹
+
+scale is (2, 20);								-- 设置比例
+for T from 0 to 300 step 1 draw (t, -ln(t));	-- 函数f(t)=ln(t)的轨迹
+
+```
+运行结果：
+
+![test3](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test3.PNG)
+
+### 示例5
+```
+origin is (350, 220);					-- 原点位置
+rot is 0;						-- 旋转角度为零
+scale is (100, 100);					-- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/100 draw(cos(t), sin(t));	-- 画园
+scale is (150, 150);  				        -- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/150 draw(cos(t), sin(t));	-- 画园
+scale is (200, 200);					-- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/200 draw(cos(t), sin(t));	-- 画圆
+```
+运行结果：
+
+![test4](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test4.PNG)
+
+### 示例6
+```
+--------------- 测试f(t)=t*t与f(t)=t**2的图形：
+rot is 0;										-- 不旋转
+origin is (50, 400);							-- 设置新原点（距系统默认原点的偏移量）
+scale is (1, 1);								-- 设置比例
+
+for T from 0 to 300 step 1 draw (t, 0);			-- 横坐标
+for T from 0 to 300 step 1 draw (0, -t);		-- 纵坐标
+
+scale is (2, 0.1);								-- 设置比例
+for T from 0 to 55 step 1 draw (t, -(t*t));		-- 函数f(t)=t*t的轨迹
+
+origin is (150, 400);							-- 设置新原点（横坐标右移100）
+for T from 0 to 55 step 1 draw (t, -(t**2));	-- 函数f(t)=t**2的轨迹
+
+```
+运行结果：
+
+![test5](https://raw.githubusercontent.com/zhangpc123/SimpleDrawer/master/images/test5.PNG)
