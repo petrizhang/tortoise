@@ -122,7 +122,7 @@ rot is pi;												  -- 逆时针旋转180度
 #### 2.2.4 循环绘图
 循环绘图语句是本语言的核心语句，图像的绘制通过本语句实现，语法为：
 ```
-for T from startExpression to endExpressiong step stepExpression draw (xExpression, yExpressioig);
+for T from startExpression to endExpressiong step stepExpression draw (xExpression, yExpression);
 ```
 含义是从T从startExpression开始，以stepExpression为步长，直到endExpressing，
 绘制点(xExpression, yExpression)。
