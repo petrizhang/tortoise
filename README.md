@@ -62,11 +62,22 @@ for语句的具体语法可参考后文。
 
 由四则运算、函数调用以及'('和')'可任意组合成数学表达式。
 
+例如：
+```
+((1-1/(10/7))*Cos(T)+1/(10/7)*Cos(-T*((10/7)-1)), 
++
+(1-1/(10/7))*Sin(T)+1/(10/7)*Sin(-T*((10/7)-1)))
+```
+### 基本语句
+本语言仅支持原点设置、缩放、旋转和循环绘图4种语句，语句间需使用分号`';'`进行分隔。
 
-本绘图语言是一门非常简单的语言，不区分大小写，支持图像的平移、缩放、旋转等操作。
+其中循环绘图语句为主绘图语句，其余皆为参数设置。
 
-支持的语句如下，语句间需要有分号分隔：
-### 平移
+参数是全局的，包括原点、缩放倍数、旋转角度三种，任意时刻均可以使用对应的语句改变这几个参数，
+从而影响之后的绘图。
+
+各语句j介绍如下：
+#### 原点设置
 通过设置图像的原点即可进行平移，设置原点的语法为：
 ```
 origin is (Expression, Exression)
@@ -80,7 +91,7 @@ origin is (20, 200);
 ```
 origin is (cos(20), sin(200));
 ```
-### 缩放
+#### 缩放
 由于本语言的绘图以像素为单位，欲使图像正常显示，需要放大相应的倍数。
 
 缩放语法为：
@@ -91,7 +102,8 @@ scale is (Expression, Expression);
 ```
 scale is (40, 40);										-- 横纵轴各放大40倍
 ```
-### 旋转
+#### 旋转
+设置图像绘成之后的旋转角度，仅影响本语句之后的绘图，语法为：  
 ```
 rot is Expression;
 ```
@@ -106,13 +118,25 @@ rot is pi/2;												-- 顺时针旋转90度
 rot is pi;												  -- 逆时针旋转180度
 ```
 
-for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+#### 循环绘图
+循环绘图语句是本语言的核心语句，图像的绘制通过本语句实现，语法为：
+```
+for T from startExpression to endExpressiong step stepExpression draw (xExpression, yExpressioig);
+```
+含义是从T从startExpression开始，以stepExpression为步长，直到endExpressing，
+绘制点(xExpression, yExpression)。
 
-for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+其中xExpression/yExpression是一个常量或者关于t的表达式，表示某一点的横/纵坐标。
 
-for T from 0 to 2*pi step pi/50 draw (t, -sin(t));		-- 画T的轨迹
+例：
+
+```
+for T from 0 to 100 step 1 draw (t, t);		          -- 画一条(0,0)到(100,100)的线段
+for T from 0 to 2*pi step pi/50 draw (t, sin(t));		-- 画sin(x)在0~2*pi范围内的轨迹
+```
 
 ### 关键字
+本语言有如下关键字，在语言实现中采用查表的方式翻译成对应语义，表的设置如下：
 
 |token名|关键字|字面值|函数指针|  
 |---|---|---|---|  
