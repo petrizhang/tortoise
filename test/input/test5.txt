@@ -1,0 +1,13 @@
+--------------- 测试f(t)=t*t与f(t)=t**2的图形：
+rot is 0;										-- 不旋转
+origin is (50, 400);							-- 设置新原点（距系统默认原点的偏移量）
+scale is (1, 1);								-- 设置比例
+
+for T from 0 to 300 step 1 draw (t, 0);			-- 横坐标
+for T from 0 to 300 step 1 draw (0, -t);		-- 纵坐标
+
+scale is (2, 0.1);								-- 设置比例
+for T from 0 to 55 step 1 draw (t, -(t*t));		-- 函数f(t)=t*t的轨迹
+
+origin is (150, 400);							-- 设置新原点（横坐标右移100）
+for T from 0 to 55 step 1 draw (t, -(t**2));	-- 函数f(t)=t**2的轨迹

@@ -1,0 +1,10 @@
+--------------- 函数f(t)=t的图形
+-- origin is (200, 300);						-- 设置原点的偏移量
+-- rot is pi/6;								-- 设置旋转角度
+-- scale is (2, 1);							-- 设置横坐标和纵坐标的比例
+for T fom 0 to 200 step 1 draw (t, 0);		-- 横坐标的轨迹
+for T from 0 to 180 step 1 draw (0, t);	-- 纵坐标的轨迹
+for T from 0 to 150 step 1 draw (t, t) ---- 函数f(t)=t的轨迹 
+
+
+

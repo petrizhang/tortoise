@@ -1,0 +1,8 @@
+origin is (350, 220);					-- 原点位置
+rot is 0;						-- 旋转角度为零
+scale is (100, 100);					-- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/100 draw(cos(t), sin(t));	-- 画园
+scale is (150, 150);  				        -- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/150 draw(cos(t), sin(t));	-- 画园
+scale is (200, 200);					-- 横、纵坐标比例因子
+for t from 0 to 2*pi step pi/200 draw(cos(t), sin(t));	-- 画园
