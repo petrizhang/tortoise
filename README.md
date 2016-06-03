@@ -81,9 +81,9 @@ for语句的具体语法可参考后文。
 
 各语句介绍如下：
 #### 2.2.1 原点设置
-通过设置图像的原点即可进行平移，设置原点的语法为：
+通过设置图像的原点即可对图像进行平移，设置原点的语法为：
 ```
-origin is (Expression, Exression)
+origin is (Expression, Expression)
 ```
 单位为像素。
 
@@ -126,8 +126,8 @@ rot is pi;												  -- 逆时针旋转180度
 ```
 for T from startExpression to endExpressiong step stepExpression draw (xExpression, yExpression);
 ```
-含义是从T从startExpression开始，以stepExpression为步长，直到endExpressing，
-绘制点(xExpression, yExpression)。
+含义是T从startExpression开始，以stepExpression为步长，直到endExpressing，
+循环绘制点(xExpression, yExpression)。
 
 其中xExpression/yExpression是一个常量或者关于t的表达式，表示某一点的横/纵坐标。
 
