@@ -1,7 +1,7 @@
 # SimpleDrawer
-Interpreter of a simple drawing language.
+Interpreter of a simple math function drawing language.
 
-编译原理大作业，简单的函数绘图语言解释器。
+数学函数绘图语言解释器。
 
 ## 1. 项目构建
 win10系统
